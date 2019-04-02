@@ -8,16 +8,14 @@ class AdminController extends BaseController {
     static $instance = null;
         
     static function & getInstance() {
-        if (null == self::$instance) {
-            self::$instance = new self();
+        if (null == AdminController::$instance) {
+            AdminController::$instance = new AdminController();
         }
-        return self::$instance;
+        return AdminController::$instance;
     }
     protected function allowedActions() {
         return array(
             'configure',
-            'delete',
-            'savedata',
         );
     }
     public function execute() {
@@ -26,6 +24,7 @@ class AdminController extends BaseController {
         }
         parent::execute();
     }
+    
     public function configureAction() {
         $literals = array(
             "actions" => array(
@@ -35,10 +34,10 @@ class AdminController extends BaseController {
             "placeholder" => __('Please Fill', Helpers::LOCALE),
             "question" => __('Are you Sure?', Helpers::LOCALE),
         );
-        wp_localize_script(Helpers::NAME.'-configure', 'ajaxurl', Helpers::ajaxUrl());
-        wp_localize_script(Helpers::NAME.'-configure', 'configureLiterals', $literals);
-        wp_enqueue_script(Helpers::NAME.'-configure');
-        wp_enqueue_style(Helpers::NAME.'-configure');
+        wp_localize_script('uenole-contenttype-post-configure', 'ajaxurl', Helpers::ajaxUrl());
+        wp_localize_script('uenole-contenttype-post-configure', 'configureLiterals', $literals);
+        wp_enqueue_script('uenole-contenttype-post-configure');
+        wp_enqueue_style('uenole-contenttype-post-configure');
         $fields = Helpers::getOption(Helpers::NAMESPACE."_fields");
         $this->addParams(array(
             "fields" => $fields["extra"],
@@ -48,10 +47,11 @@ class AdminController extends BaseController {
         add_thickbox();
         echo $this->renderView( 'admin/configure.twig', $params );
     }
+    
     public function deleteAction() {
         $this->emptyParams();
         if (count($_POST)) {
-            if ( !wp_verify_nonce( isset( $_POST['_contenttypeprojectnonce'] ) ? $_POST['_contenttypeprojectnonce'] : null, 'configure' )) {
+            if ( !wp_verify_nonce( isset( $_POST['_contenttypepostnonce'] ) ? $_POST['_contenttypepostnonce'] : null, 'configure' )) {
                 print 'Sorry, your nonce did not verify.';
                 exit;
             }
@@ -76,7 +76,7 @@ class AdminController extends BaseController {
     public function savedataAction() {
         $this->emptyParams();
         if (count($_POST)) {
-            if ( !wp_verify_nonce( isset( $_POST['_contenttypeprojectnonce'] ) ? $_POST['_contenttypeprojectnonce'] : null, 'configure' )) {
+            if ( !wp_verify_nonce( isset( $_POST['_contenttypepostnonce'] ) ? $_POST['_contenttypepostnonce'] : null, 'configure' )) {
                 print 'Sorry, your nonce did not verify.';
                 exit;
             }
@@ -97,7 +97,7 @@ class AdminController extends BaseController {
         }
         $this->configureAction();
     }
-
+    
     private function saveConfigureData() {
 
         $key = Helpers::NAMESPACE."_fields";        

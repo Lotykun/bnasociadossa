@@ -1,8 +1,8 @@
 <?php
 namespace BN\ContentProject\Table;
 
-use \BN\ContentProject\AdminController;
-use \BN\ContentProject\Helpers;
+use BN\ContentProject\AdminController;
+use BN\ContentProject\Helpers;
 
 class Fields_Configure_Table extends \WP_List_Table {
     public function get_columns(){
@@ -134,10 +134,10 @@ class Fields_Configure_Table extends \WP_List_Table {
     }
 
     public function prepare_items() {
-        $post_fields = Helpers::getOption(Helpers::NAMESPACE."_fields");
+        $fields = Helpers::getOption(Helpers::NAMESPACE."_fields");
         $items = array();
         $i = 0;
-        foreach ($post_fields["extra"] as $fieldvalue) {
+        foreach ($fields["extra"] as $fieldvalue) {
             $items[$i]['ID'] = $fieldvalue['id'];
             $items[$i]['fieldtitle'] = $fieldvalue['label'];
             $items[$i]['fieldtype'] = $fieldvalue['type'];
@@ -164,7 +164,7 @@ class Fields_Configure_Table extends \WP_List_Table {
     public function get_bulk_actions() {
         $actions = array(
             'addnewfield'    => __('Add new Field',Helpers::LOCALE),
-            'delete'    => __('Delete',Helpers::LOCALE),
+            /*'delete'    => __('Delete',Helpers::LOCALE),*/
         );
         return $actions;
     }

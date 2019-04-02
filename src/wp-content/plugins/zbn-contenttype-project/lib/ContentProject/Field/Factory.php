@@ -1,8 +1,8 @@
 <?php
 namespace BN\ContentProject\Field;
 
-use BN\ContentProject\Helpers;
 use BN\Core\Field\iFactory;
+use BN\ContentProject\Helpers;
 
 class Factory implements iFactory {
     public static function get_field_instance($name) {

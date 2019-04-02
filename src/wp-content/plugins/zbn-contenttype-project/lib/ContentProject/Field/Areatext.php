@@ -1,9 +1,8 @@
 <?php
 namespace BN\ContentProject\Field;
 
-use \BN\ContentProject\LibraryController;
-use \BN\ContentProject\Helpers;
-use \BN\ContentProject\Field;
+use BN\ContentProject\LibraryController;
+use BN\ContentProject\Helpers;
 
 class Areatext extends Field {
     protected $configuration;

@@ -1,8 +1,9 @@
 <?php
 namespace BN\ContentProject\Field;
 
-use \BN\ContentProject\LibraryController;
-use \BN\ContentProject\Helpers;
+use BN\ContentProject\LibraryController;
+use BN\ContentProject\Helpers;
+
 class Text extends Field {
     protected $configuration;
 

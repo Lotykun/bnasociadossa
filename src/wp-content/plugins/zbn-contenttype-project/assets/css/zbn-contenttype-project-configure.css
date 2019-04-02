@@ -7,7 +7,6 @@ and open the template in the editor.
     Created on : 22-mar-2018, 9:17:15
     Author     : jlotito
 */
-
 .wp-list-table .column-cb { width: 4%; }
 .wp-list-table .column-fieldtitle { width: 15%; }
 .wp-list-table .column-fieldtype { width: 15%; }
@@ -20,3 +19,4 @@ and open the template in the editor.
 
 .wp-list-table input[type=text] { width: 95%}
 .wp-list-table a.disabled_link {pointer-events: none;cursor: default;}
+

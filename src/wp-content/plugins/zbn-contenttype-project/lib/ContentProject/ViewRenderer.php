@@ -3,7 +3,6 @@ namespace BN\ContentProject;
 
 use BN\Core\View\View;
 use BN\ContentProject\Helpers;
-use BN\ContentProject\Field\Factory;
 
 class ViewRenderer extends View {
 
@@ -17,7 +16,7 @@ class ViewRenderer extends View {
     }
     
     public function renderTwigField($fieldkey, $data) {
-        $fieldObject = Factory::get_field_instance($fieldkey);
+        $fieldObject = Field\Factory::get_field_instance($fieldkey);
         $fieldObject->renderField($data);
     }
     

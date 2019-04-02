@@ -18,17 +18,17 @@ return array(
             "slug" => array(),
         ),
         "extra" => array(
-            /*"pretitle" => array(
+            "pretitle" => array(
                 "id" => "pretitle",
-                "label" => __("Ante Title",Helpers::LOCALE),
-                "type" => "areatext",
+                "label" => __("Ante Titulo",Helpers::LOCALE),
+                "type" => "text",
                 "validation" => array(
                     "width" => 40,
                     "pattern" => "[a-zA-Z0-9]+"
                 ),
                 "readonly" => FALSE,
                 "required" => TRUE,
-                "enabled" => FALSE,
+                "enabled" => TRUE,
                 "metabox" => array(
                     "id" => "pretitle_mb",
                     "context" => "normal",
@@ -36,24 +36,24 @@ return array(
                 ),
                 "metakey" => "pretitle"
             ),
-            "subtitle" => array(
-                "id" => "subtitle",
-                "label" => __("SubTitle",Helpers::LOCALE),
-                "type" => "areatext",
+            "hometitle" => array(
+                "id" => "hometitle",
+                "label" => __("Titulo Portada",Helpers::LOCALE),
+                "type" => "text",
                 "validation" => array(
-                    "width" => 20,
+                    "width" => 5,
                     "pattern" => "[a-zA-Z0-9]+"
                 ),
                 "readonly" => FALSE,
                 "required" => TRUE,
                 "enabled" => TRUE,
                 "metabox" => array(
-                    "id" => "subtitle_mb",
+                    "id" => "hometitle_mb",
                     "context" => "normal",
-                    "label" => __("SubTitle",Helpers::LOCALE),
+                    "label" => __("Titulo Portada",Helpers::LOCALE),
                 ),
-                "metakey" => "subtitle"
-            ),*/
+                "metakey" => "hometitle"
+            ),
         ),
     ),
     Helpers::NAMESPACE."_validationliterals" => array(

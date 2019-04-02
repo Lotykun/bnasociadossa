@@ -16,7 +16,7 @@ class Helpers extends HelpersCommon {
     const CPT_NAME_PLU = BN_CONTENTPROJECT_CPT_NAME_PLU;
 
     protected static $_settings = null;
-    
+
     public static function getPluginPath() {
         $pluginsPath = DIRECTORY_SEPARATOR . 'wp-content' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR;
         return substr( static::PLUGIN_FILE, strpos( static::PLUGIN_FILE, $pluginsPath ) + strlen( $pluginsPath ) );
@@ -28,15 +28,7 @@ class Helpers extends HelpersCommon {
     }
 
     public static function pluginUrl( $uri = '' ) {
-        return apply_filters( 'zbn_contenttype_project_plugin_url', plugins_url( $uri, static::PLUGIN_FILE ), $uri );
+        return apply_filters( 'uenole_contenttype_post_plugin_url', plugins_url( $uri, static::PLUGIN_FILE ), $uri );
     }
-
-    public static function isPluginNetworkActivated() {
-        if ( ! function_exists( 'is_plugin_active_for_network' ) ) {
-            require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
-        }
-
-        return is_plugin_active_for_network( str_replace(DIRECTORY_SEPARATOR, '/', static::getPluginPath()) );
-    }
-
+    
 }

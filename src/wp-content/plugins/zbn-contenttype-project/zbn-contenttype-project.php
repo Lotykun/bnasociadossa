@@ -9,7 +9,6 @@ Author: Juan Lotito
 Author Email: jlotito@opensistemas.com
 Text Domain: test
 License: GPLv2
-Depends: BN Service Core
 */
 
 /* 
@@ -31,15 +30,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
 namespace BN\ContentProject;
-
 use BN\ContentProject\Autoload;
-use BN\ContentProject\Project;
 
 define('BN_CONTENTPROJECT_PLUGIN_FILE', __FILE__ );
 define('BN_CONTENTPROJECT_ROOT', dirname( __FILE__ ));
 define('BN_CONTENTPROJECT_NAMESPACE', "ContentProject");
-define('BN_CONTENTPROJECT_NAME', "zbn-contenttype-project");
-define('BN_CONTENTPROJECT_LOCALE', "zbn-contenttype-project");
+define('BN_CONTENTPROJECT_NAME', "bn-contenttype-project");
+define('BN_CONTENTPROJECT_LOCALE', "bn-contenttype-project");
 define('BN_CONTENTPROJECT_CPT_NAME_SING', "project");
 define('BN_CONTENTPROJECT_CPT_NAME_PLU', "projects");
 
