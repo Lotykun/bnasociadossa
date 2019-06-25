@@ -15,27 +15,19 @@ class Base {
         add_action('admin_enqueue_scripts', array(&$this, 'adminEnqueueScripts')); 
         add_action('admin_menu', array($this, 'adminMenu'));
         add_action('init',array(&$this,'executeLibraryController'));
-        add_action('init', array(&$this,'disable_comments_admin_bar'));
         add_action('add_meta_boxes', array(&$this,'register_fields_metaboxes'));
-        add_action('save_post', array(&$this,'save_metadata'));
-        add_action('admin_init',array(&$this,'adminInit'));
-        add_action('admin_init', array(&$this,'disable_comments_dashboard'));
+        add_action('save_post_project', array(&$this,'save_metadata'));
+        add_action('pre_get_posts', array(&$this,'include_noname_query'));
         add_action('admin_menu', array($this, 'hide_options'));
-        add_action('admin_enqueue_scripts', array(&$this, 'enqueue_custom_scripts'));
-        add_action('admin_menu', array(&$this,'disable_comments_admin_menu'));
     }
     
     public function addFilters() {
-        add_filter('gettext', array(&$this,'change_admin_cpt_text_filter'), 20, 3);
-        add_filter('post_date_column_time' , array(&$this,'sst_post_date_column_time'), 10, 2);
-        add_filter('comments_open', array(&$this,'disable_comments_status'), 20, 2);
-        add_filter('pings_open', array(&$this,'disable_comments_status'), 20, 2);
-        add_filter('comments_array', array(&$this,'disable_comments_hide_existing_comments', 10, 2));
+        add_filter('post_type_link', array(&$this,'custom_post_link'), 10, 2);
     }
     
     public function adminMenu() {
         add_submenu_page(
-            'edit.php',
+            'edit.php?post_type='.Helpers::CPT_NAME_SING,
             __('Settings', Helpers::LOCALE),
             __('Settings', Helpers::LOCALE),
             'manage_options',
@@ -91,40 +83,8 @@ class Base {
         $this->controller->execute();
     }
     
-    public function adminInit() {
-        add_theme_support( 'post-thumbnails' );
-        remove_post_type_support("post", 'custom-fields');
-        remove_post_type_support("post", 'post-formats');
-        remove_post_type_support("post", 'revisions');
-        remove_post_type_support("post", 'comments');
-        remove_post_type_support("post", 'trackbacks');
-    }
-    
-    public function disable_comments_admin_menu() {
-	   remove_menu_page('edit-comments.php');
-    }
-    
-    public function disable_comments_dashboard() {
-	   remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
-    }
-    
-    public function disable_comments_admin_bar() {
-	if (is_admin_bar_showing()) {
-            remove_action('admin_bar_menu', 'wp_admin_bar_comments_menu', 60);
-	}
-    }
-    
-    public function disable_comments_status() {
-	return false;
-    }
-    
-    public function disable_comments_hide_existing_comments($comments) {
-	$comments = array();
-	return $comments;
-    }
-    
     public function register_fields_metaboxes($post_type) {
-        if (in_array($post_type, array("post"))) {
+        if (in_array($post_type, array("project"))) {
             $_POST['action'] = "registerfieldsmetaboxes";
             $this->executeLibraryController();
         }
@@ -133,19 +93,10 @@ class Base {
     public function save_metadata($post_id) {
         $post = get_post($post_id);
         if (in_array($post->post_type, array("post"))) {
-            $_POST['action'] = "savepostmetadata";
+            $_POST['action'] = "saveprojectmetadata";
             $_POST['postId'] = $post_id;
             $this->executeLibraryController();
         }
-    }
-    
-    public function change_admin_cpt_text_filter($translated_text, $untranslated_text, $domain) {
-        switch( $untranslated_text ) {
-            case 'Excerpt':
-              $translated_text = __( 'Entradilla',Helpers::LOCALE );
-            break;
-        }
-        return $translated_text;
     }
     
     public function hide_options() {
@@ -159,37 +110,34 @@ class Base {
         }
     }
     
-    public function enqueue_custom_scripts ($hook) {
-        global $post;
-        $user = wp_get_current_user();
-        $disable_roles = array('editor');
-        if(array_intersect($disable_roles, $user->roles ) ) {
-            if ($post && in_array($post->post_type, array('video', 'post', 'gallery', 'newsletter', 'prize')) && in_array($hook, array('post.php', 'post-new.php'))){
-                wp_enqueue_script('costum-post-js', Helpers::jsUrl( Helpers::NAME.'-hidetag.js' ), array('jquery'), '20171904');
+    public function custom_post_link($post_link, $post){
+        if (in_array($post->post_type, array('video')) && 'publish' == $post->post_status) {
+            $SLUGG = $post->post_name;
+            $post_cats = wp_get_post_categories($post->ID,array("fields" => "all"));
+            if (!empty($post_cats[0])){ $target_CAT= $post_cats[0];
+                while(!empty($target_CAT->slug)){
+                    $SLUGG =  $target_CAT->slug .'/'.$SLUGG; 
+                    if  (!empty($target_CAT->parent)) {$target_CAT = get_term( $target_CAT->parent, 'category');}   else {break;}
+                }
+                $post_link= get_option('home').'/'. urldecode($SLUGG).".html";
             }
         }
-        if ($post && in_array($post->post_type, array('video', 'post', 'gallery', 'newsletter')) && in_array($hook, array('post.php', 'post-new.php'))){
-            $literals = Helpers::getOption(Helpers::NAMESPACE."_validationliterals");
-            $tags = get_tags(array('fields' => 'names','hide_empty' => FALSE));
-            $secch = get_terms("second_channel",array('fields' => 'names','hide_empty' => FALSE));
-            wp_register_script('validation-post-js', Helpers::jsUrl( Helpers::NAME.'-validation.js' ), array('jquery'), '20170604', false);
-            wp_register_script(Helpers::LOCALE, Helpers::jsUrl(Helpers::NAME.'.js'), array('jquery'), '20170604', false);
-            wp_localize_script('validation-post-js', 'validationLiterals', $literals);
-            wp_localize_script('validation-post-js', 'validationTags', $tags);
-            wp_localize_script('validation-post-js', 'validationSecch', $secch);
-            wp_localize_script('validation-post-js', 'validationRoles', $disable_roles);
-            wp_localize_script('validation-post-js', 'validationUserRoles', $user->roles);
-            wp_enqueue_script(Helpers::LOCALE);
-            wp_enqueue_script('validation-post-js');
-        }
+        return  $post_link;
     }
     
-    public function sst_post_date_column_time( $h_time, $post ) {
-        // If post is scheduled then add the time to the column output
-        if ($post->post_status == 'future') {
-            $h_time .= '<br>' . get_post_time( 'g:i a', false, $post );
+    public function include_noname_query($q) {
+        
+        if ($q->is_main_query() && !is_admin() && $q->is_single){
+            $query_var_post_type = $q->get('post_type');
+            if (!isset($query_var_post_type) || empty($query_var_post_type)) {
+                $q->set( 'post_type',  array_merge(array('post'),array('page'), array('video')));
+            } else {
+                if (!is_array($query_var_post_type)) {
+                    $query_var_post_type = array($query_var_post_type);
+                }
+                $q->set( 'post_type',  array_merge($query_var_post_type, array('video')));
+            }
         }
-        // Return the column output
-        return $h_time;
+        return $q;
     }
 }

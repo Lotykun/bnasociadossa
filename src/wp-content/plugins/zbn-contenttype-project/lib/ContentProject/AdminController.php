@@ -8,14 +8,16 @@ class AdminController extends BaseController {
     static $instance = null;
         
     static function & getInstance() {
-        if (null == AdminController::$instance) {
-            AdminController::$instance = new AdminController();
+        if (null == self::$instance) {
+            self::$instance = new self();
         }
-        return AdminController::$instance;
+        return self::$instance;
     }
     protected function allowedActions() {
         return array(
             'configure',
+            'delete',
+            'savedata',
         );
     }
     public function execute() {
@@ -34,10 +36,10 @@ class AdminController extends BaseController {
             "placeholder" => __('Please Fill', Helpers::LOCALE),
             "question" => __('Are you Sure?', Helpers::LOCALE),
         );
-        wp_localize_script('uenole-contenttype-post-configure', 'ajaxurl', Helpers::ajaxUrl());
-        wp_localize_script('uenole-contenttype-post-configure', 'configureLiterals', $literals);
-        wp_enqueue_script('uenole-contenttype-post-configure');
-        wp_enqueue_style('uenole-contenttype-post-configure');
+        wp_localize_script(Helpers::NAME.'-configure', 'ajaxurl', Helpers::ajaxUrl());
+        wp_localize_script(Helpers::NAME.'-configure', 'configureLiterals', $literals);
+        wp_enqueue_script(Helpers::NAME.'-configure');
+        wp_enqueue_style(Helpers::NAME.'-configure');
         $fields = Helpers::getOption(Helpers::NAMESPACE."_fields");
         $this->addParams(array(
             "fields" => $fields["extra"],
@@ -76,7 +78,7 @@ class AdminController extends BaseController {
     public function savedataAction() {
         $this->emptyParams();
         if (count($_POST)) {
-            if ( !wp_verify_nonce( isset( $_POST['_contenttypepostnonce'] ) ? $_POST['_contenttypepostnonce'] : null, 'configure' )) {
+            if ( !wp_verify_nonce( isset( $_POST['_contenttypeprojectnonce'] ) ? $_POST['_contenttypeprojectnonce'] : null, 'configure' )) {
                 print 'Sorry, your nonce did not verify.';
                 exit;
             }

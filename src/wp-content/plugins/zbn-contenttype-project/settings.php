@@ -18,9 +18,9 @@ return array(
             "slug" => array(),
         ),
         "extra" => array(
-            "pretitle" => array(
-                "id" => "pretitle",
-                "label" => __("Ante Titulo",Helpers::LOCALE),
+            "promotor" => array(
+                "id" => "promotor",
+                "label" => __("Promotor",Helpers::LOCALE),
                 "type" => "text",
                 "validation" => array(
                     "width" => 40,
@@ -30,29 +30,47 @@ return array(
                 "required" => TRUE,
                 "enabled" => TRUE,
                 "metabox" => array(
-                    "id" => "pretitle_mb",
-                    "context" => "normal",
-                    "label" => __("Ante Title",Helpers::LOCALE),
+                    "id" => "promotor_mb",
+                    "context" => "side",
+                    "label" => __("Promotor",Helpers::LOCALE),
                 ),
-                "metakey" => "pretitle"
+                "metakey" => "promotor"
             ),
-            "hometitle" => array(
-                "id" => "hometitle",
-                "label" => __("Titulo Portada",Helpers::LOCALE),
+            "surface" => array(
+                "id" => "surface",
+                "label" => __("Superficie",Helpers::LOCALE),
                 "type" => "text",
                 "validation" => array(
-                    "width" => 5,
+                    "width" => 40,
                     "pattern" => "[a-zA-Z0-9]+"
                 ),
                 "readonly" => FALSE,
                 "required" => TRUE,
                 "enabled" => TRUE,
                 "metabox" => array(
-                    "id" => "hometitle_mb",
-                    "context" => "normal",
-                    "label" => __("Titulo Portada",Helpers::LOCALE),
+                    "id" => "surface_mb",
+                    "context" => "side",
+                    "label" => __("Superficie",Helpers::LOCALE),
                 ),
-                "metakey" => "hometitle"
+                "metakey" => "surface"
+            ),
+            "budget" => array(
+                "id" => "budget",
+                "label" => __("Presupuesto",Helpers::LOCALE),
+                "type" => "text",
+                "validation" => array(
+                    "width" => 40,
+                    "pattern" => "[a-zA-Z0-9]+"
+                ),
+                "readonly" => FALSE,
+                "required" => TRUE,
+                "enabled" => TRUE,
+                "metabox" => array(
+                    "id" => "budget_mb",
+                    "context" => "side",
+                    "label" => __("Presupuesto",Helpers::LOCALE),
+                ),
+                "metakey" => "budget"
             ),
         ),
     ),

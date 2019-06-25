@@ -7,34 +7,35 @@ class LibraryController extends BaseController {
     static $instance = null;
 
     static function & getInstance() {
-        if (null == LibraryController::$instance) {
-            LibraryController::$instance = new LibraryController();
+        if (null == self::$instance) {
+            self::$instance = new self();
         }
-        return LibraryController::$instance;
+        return self::$instance;
     }
-    
+
     protected function allowedActions() {
         return array(
             'init',
             'registerfieldsmetaboxes',
-            'savepostmetadata'
+            'saveprojectmetadata'
         );
     }
-    
+
     public function execute() {
         if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) && $this->action !== "init") {
             wp_die( 'Access denied' );
         }
         parent::execute();
     }
-    
+
     public function initAction() {
+        $fields = Helpers::getOption(Helpers::NAMESPACE."_fields");
+        $this->register_cpt();
         if (get_current_user_id()){
             $this->set_user_metaboxes();
         }
-        $fields = Helpers::getOption(Helpers::NAMESPACE."_fields");
 
-        if(!empty($post_fields["extra"])) {
+        if(!empty($fields["extra"])) {
             foreach ($fields["extra"] as $fieldkey => $fieldvalue) {
                 $fieldObject = Field\Factory::get_field_instance($fieldkey);
                 if (!empty($fieldvalue['required']) && !empty($fieldvalue['enabled'])) {
@@ -43,7 +44,7 @@ class LibraryController extends BaseController {
             }
         }
     }
-    
+
     public function registerfieldsmetaboxesAction() {
         $fields = Helpers::getOption(Helpers::NAMESPACE."_fields");
 
@@ -56,7 +57,7 @@ class LibraryController extends BaseController {
             }
         }
     }
-    
+
     public function savepostmetadataAction() {
         $post_id = Helpers::getRequestPostParam("postId");
         $fields = Helpers::getOption(Helpers::NAMESPACE."_fields");
@@ -70,7 +71,34 @@ class LibraryController extends BaseController {
             }
         }
     }
-    
+
+    private function register_cpt(){
+        $args = array(
+            'public' => true,
+            'label'  => __(ucfirst(Helpers::CPT_NAME_PLU), Helpers::LOCALE),
+            'menu_icon' => 'dashicons-format-aside',
+            'menu_position' => 6,
+            'labels' => array(
+                'all_items' => __('All '.ucfirst(Helpers::CPT_NAME_PLU), Helpers::LOCALE),
+                'add_new' => __('Add New', Helpers::LOCALE),
+                'add_new_item' => __('Add New '.ucfirst(Helpers::CPT_NAME_SING).' Post', Helpers::LOCALE),
+                'edit_item' => __('Edit '.ucfirst(Helpers::CPT_NAME_SING).' Post', Helpers::LOCALE),
+                'singular_name' => __(Helpers::CPT_NAME_SING, Helpers::LOCALE)
+            ),
+            'show_in_rest' => TRUE,
+            'has_archive' => TRUE,
+            'supports' => array(
+                'title',
+                'excerpt',
+                'editor',
+                'thumbnail',
+                'author'),
+        );
+        register_post_type( Helpers::CPT_NAME_SING, $args );
+        register_taxonomy_for_object_type('category', Helpers::CPT_NAME_SING);
+        register_taxonomy_for_object_type('post_tag', Helpers::CPT_NAME_SING);
+    }
+
     private function set_user_metaboxes($user_id = null) {
         $fields = Helpers::getOption(Helpers::NAMESPACE."_fields");
         $positions = array(
@@ -86,19 +114,19 @@ class LibraryController extends BaseController {
                 }
             }
         }
-        
+
         if (is_plugin_active("wordpress-seo/wp-seo.php")){
             array_push($positions["normal"], "wpseo_meta");
         }
-        
+
         $meta_value_order = array(
             'side' => implode(",", $positions["side"]),
             'normal' => implode(",", $positions["normal"]),
             'advanced' => implode(",", $positions["advanced"]),
         );
-        
+
         $meta_value_hide = array();
-        
+
         $meta_key['order'] = 'meta-box-order_project';
         $meta_key['hidden'] = 'metaboxhidden_project';
 
@@ -108,7 +136,7 @@ class LibraryController extends BaseController {
         $order = get_user_meta($user_id, $meta_key['order'], true);
         if ($order !== $meta_value_order) {
             update_user_meta( $user_id, $meta_key['order'], $meta_value_order);
-        }                
+        }
         $hidden = get_user_meta($user_id, $meta_key['hidden'], true);
         if ($hidden !== $meta_value_hide) {
             update_user_meta( $user_id, $meta_key['hidden'], $meta_value_hide);
