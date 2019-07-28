@@ -92,7 +92,7 @@ class Base {
     
     public function save_metadata($post_id) {
         $post = get_post($post_id);
-        if (in_array($post->post_type, array("post"))) {
+        if (in_array($post->post_type, array("project"))) {
             $_POST['action'] = "saveprojectmetadata";
             $_POST['postId'] = $post_id;
             $this->executeLibraryController();

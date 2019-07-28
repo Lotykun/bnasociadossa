@@ -72,6 +72,24 @@ return array(
                 ),
                 "metakey" => "budget"
             ),
+            "featuredgallery" => array(
+                "id" => "featuredgallery",
+                "label" => __("Featured Gallery","zbn-contenttype-project"),
+                "type" => "featuredgallery",
+                /*"validation" => array(
+                    "width" => 20,
+                    "pattern" => "[a-zA-Z0-9]+"
+                ),*/
+                "readonly" => TRUE,
+                "required" => TRUE,
+                "enabled" => TRUE,
+                "metabox" => array(
+                    "id" => "featuredgallery_mb",
+                    "context" => "side",
+                    "label" => __("Featured Gallery","zbn-contenttype-project"),
+                ),
+                "metakey" => "featuredgallery"
+            ),
         ),
     ),
     Helpers::NAMESPACE."_validationliterals" => array(

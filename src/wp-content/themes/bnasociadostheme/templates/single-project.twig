@@ -9,7 +9,14 @@
                 <!--<p class="blog-author">
                     <span>By</span><a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span> {{ post.date }}
                 </p>-->
-                <div class="article-contain article-gallery">{{ post_gallery }}</div>
+                <div class="article-contain article-gallery">
+                    <div class="single-post-media-wrap-gallery">
+                        <div class="single-post-media-gallery">
+                            {{renderFeaturedGallery(post)}}
+                        </div>
+                    </div>
+                    {#{{ post_gallery }}#}
+                </div>
                 <div class="article-contain article-main-media">
                     <!--<img src="{{ post.thumbnail.src|resize(1200, 300) }}">-->
                     <img src="{{ post.thumbnail.src}}" width="600px" height="500px">

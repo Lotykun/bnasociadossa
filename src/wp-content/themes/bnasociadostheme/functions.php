@@ -152,6 +152,7 @@ class StarterSite extends Timber\Site {
 
             $functions = array(
                 'getPathCode' => new \Twig_SimpleFunction('getPathCode', array($this,'getPathCode')),
+                'renderFeaturedGallery' => new \Twig_SimpleFunction('renderFeaturedGallery', array($this,'renderFeaturedGallery')),
             );
 
             return $functions;
@@ -161,11 +162,19 @@ class StarterSite extends Timber\Site {
 
             return "Loty is here";
         }
+        
+        public function renderFeaturedGallery($post) {
+            if (isset($post->featuredgallery) && !empty($post->featuredgallery)) {
+                $featuredGallery = $post->featuredgallery;
+                $loty = $this->do_shortcode($featuredGallery);
+                return $this->do_shortcode($featuredGallery);
+            }
+        }
 }
 
 new StarterSite();
 
-add_filter( 'the_content', 'filter_gallery' );
+/*add_filter( 'the_content', 'filter_gallery' );
 function filter_gallery($content) {
     $content_markup = '';
     //if (has_block('gallery', $content)) {
@@ -179,4 +188,4 @@ function filter_gallery($content) {
     }
     //}
     return $content;
-}
+}*/

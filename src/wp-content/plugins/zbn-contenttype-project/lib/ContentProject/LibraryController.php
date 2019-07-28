@@ -58,7 +58,7 @@ class LibraryController extends BaseController {
         }
     }
 
-    public function savepostmetadataAction() {
+    public function saveprojectmetadataAction() {
         $post_id = Helpers::getRequestPostParam("postId");
         $fields = Helpers::getOption(Helpers::NAMESPACE."_fields");
 
