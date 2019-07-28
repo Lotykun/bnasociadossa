@@ -21,7 +21,27 @@
                     <!--<img src="{{ post.thumbnail.src|resize(1200, 300) }}">-->
                     <img src="{{ post.thumbnail.src}}" width="600px" height="500px">
                 </div>
-                <div class="article-contain article-body">{{post.content}}</div>
+                <div class="article-contain article-body">
+                    <div class="article-body-data">
+                        <table>
+                            <tr>
+                              <th>Promotor:</th>
+                              <td>{{post.promotor}}</td>
+                            </tr>
+                            <tr>
+                              <th>Superficie:</th>
+                              <td>{{post.surface}}</td>
+                            </tr>
+                            <tr>
+                              <th>Presupuesto:</th>
+                              <td>{{post.budget}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="article-body-content">
+                        {{post.content}}
+                    </div>
+                </div>
             </section>
 
             <!-- comment box -->
