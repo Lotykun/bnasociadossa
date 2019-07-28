@@ -3,3 +3,7 @@
  * Description: Starter Theme to use with Timber
  * Author: Upstatement and YOU!
 */
+.article-contain{display: inline-block;min-height: 25px;vertical-align: top}
+.article-gallery{width: 15%;background-color: #eef2d0;}
+.article-main-media{width: 50%;background-color: #d0f2d7}
+.article-body{width: 34%;background-color: #f2d0db;}

@@ -3,11 +3,11 @@
 namespace BN\Component\Gallery;
 
 /**
-* 
+*
 */
 class Gallery
 {
-    
+
     function __construct()
     {
         $this->registerResources();
@@ -22,20 +22,20 @@ class Gallery
 
     public function registerResources() {
         add_action('wp_enqueue_scripts', array($this,'add_scripts'), 5 );
-        add_action('admin_enqueue_scripts', array($this,'add_scripts')); 
+        add_action('admin_enqueue_scripts', array($this,'add_scripts'));
     }
 
     public function add_scripts() {
 
-        wp_register_style( 'lightgallery', get_template_directory_uri() . '/bower_components/lightgallery/dist/css/lightgallery.min.css');
+        wp_register_style( 'lightgallery', get_template_directory_uri() . '/vendor/lightgallery/dist/css/lightgallery.min.css');
         wp_register_style( 'gallery-style', plugins_url( '../../assets/css/gallery.css', __FILE__ ));
         wp_enqueue_style( 'lightgallery' );
         wp_enqueue_style( 'gallery-style' );
 
-        wp_register_script( 'jquery', get_template_directory_uri() . '/bower_components/jquery/dist/jquery.min.js', array(), null, false );
+        wp_register_script( 'jquery', get_template_directory_uri() . '/vendor/jquery/dist/jquery.min.js', array(), null, false );
         // Register the script like this for a theme:
-        wp_register_script( 'lightgallery', get_template_directory_uri() . '/bower_components/lightgallery/dist/js/lightgallery-all.min.js', array( 'jquery' ) );
-     
+        wp_register_script( 'lightgallery', get_template_directory_uri() . '/vendor/lightgallery/dist/js/lightgallery-all.min.js', array( 'jquery' ) );
+
         // For either a plugin or a theme, you can then enqueue the script:
         wp_enqueue_script( 'lightgallery' );
     }

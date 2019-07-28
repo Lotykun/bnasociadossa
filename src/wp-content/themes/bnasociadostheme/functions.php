@@ -134,11 +134,49 @@ class StarterSite extends Timber\Site {
 	 * @param string $twig get extension.
 	 */
 	public function add_to_twig( $twig ) {
+                $this->addFunctions($twig);
 		$twig->addExtension( new Twig_Extension_StringLoader() );
 		$twig->addFilter( new Twig_SimpleFilter( 'myfoo', array( $this, 'myfoo' ) ) );
 		return $twig;
 	}
 
+        public function addFunctions($twig) {
+            $functions = $this->getFunctions();
+
+            foreach ($functions as $function) {
+                $twig->addFunction($function);
+            }
+        }
+
+        public function getFunctions() {
+
+            $functions = array(
+                'getPathCode' => new \Twig_SimpleFunction('getPathCode', array($this,'getPathCode')),
+            );
+
+            return $functions;
+        }
+
+        public function getPathCode() {
+
+            return "Loty is here";
+        }
 }
 
 new StarterSite();
+
+add_filter( 'the_content', 'filter_gallery' );
+function filter_gallery($content) {
+    $content_markup = '';
+    //if (has_block('gallery', $content)) {
+    $blocks = parse_blocks($content);
+    foreach ( $blocks as $block ) {
+        if ( 'gallery' === $block['blockName'] ) {
+            continue;
+        } else {
+            $content_markup .= render_block( $block );
+        }
+    }
+    //}
+    return $content;
+}
