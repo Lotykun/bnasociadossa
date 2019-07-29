@@ -153,6 +153,7 @@ class StarterSite extends Timber\Site {
             $functions = array(
                 'getPathCode' => new \Twig_SimpleFunction('getPathCode', array($this,'getPathCode')),
                 'renderFeaturedGallery' => new \Twig_SimpleFunction('renderFeaturedGallery', array($this,'renderFeaturedGallery')),
+                'do_shortcode' => new \Twig_SimpleFunction('do_shortcode', array($this,'do_shortcode')),
             );
 
             return $functions;
@@ -162,13 +163,17 @@ class StarterSite extends Timber\Site {
 
             return "Loty is here";
         }
-        
+
         public function renderFeaturedGallery($post) {
             if (isset($post->featuredgallery) && !empty($post->featuredgallery)) {
                 $featuredGallery = $post->featuredgallery;
                 $loty = $this->do_shortcode($featuredGallery);
                 return $this->do_shortcode($featuredGallery);
             }
+        }
+
+        public function do_shortcode($content, $ignore_html = false) {
+            return do_shortcode($content, $ignore_html);
         }
 }
 
