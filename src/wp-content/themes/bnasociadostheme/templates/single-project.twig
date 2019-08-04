@@ -22,7 +22,7 @@
                     <img src="{{ post.thumbnail.src}}" width="600px" height="500px">
                 </div>
                 <div class="article-contain article-body">
-                    <div class="article-body-data">
+                    <div class="article-body-data text-project-data">
                         <table>
                             <tr>
                               <th>Promotor:</th>
@@ -30,15 +30,15 @@
                             </tr>
                             <tr>
                               <th>Superficie:</th>
-                              <td>{{post.surface}}</td>
+                              <td>{{post.surface|number_format(2, ',', '.') ~ 'm2'}}</td>
                             </tr>
                             <tr>
                               <th>Presupuesto:</th>
-                              <td>{{post.budget}}</td>
+                              <td>{{post.budget|number_format(2, ',', '.') ~ '€'}}</td>
                             </tr>
                         </table>
                     </div>
-                    <div class="article-body-content">
+                    <div class="article-body-content text-project-content">
                         {{post.content}}
                     </div>
                 </div>
