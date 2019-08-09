@@ -179,18 +179,68 @@ class StarterSite extends Timber\Site {
 
 new StarterSite();
 
-/*add_filter( 'the_content', 'filter_gallery' );
-function filter_gallery($content) {
-    $content_markup = '';
-    //if (has_block('gallery', $content)) {
-    $blocks = parse_blocks($content);
-    foreach ( $blocks as $block ) {
-        if ( 'gallery' === $block['blockName'] ) {
-            continue;
-        } else {
-            $content_markup .= render_block( $block );
+//add_filter( 'template_include', 'template_include', 99 );
+//add_action( 'parse_query', 'parse_query', 99, 2 );
+add_filter('term_link', 'tag_custom_term_link', 10, 3);
+add_filter('request', 'tag_custom_term_request', 1, 1 );
+
+function tag_custom_term_request($query){
+
+    if ($query['category_name']) {
+        $name = $query['category_name'];
+    } elseif ($query['year']) {
+        $name = $query['year'];
+    } else {
+        $name = $query['name'];
+    }
+
+    $term = get_term_by('slug', $name, 'post_tag'); // get the current term to make sure it exists
+
+    if (isset($name) && $term && !is_wp_error($term)){
+        unset($query['category_name']);
+        unset($query['year']);
+        $query['tag'] = $name;
+    }
+
+    return $query;
+}
+
+function tag_custom_term_link($term_link, $term, $taxonomy){
+
+    $taxonomy_name = 'post_tag';
+    $taxonomy_slug = 'tag';
+
+    if ( strpos($term_link, $taxonomy_slug) === FALSE || $taxonomy != $taxonomy_name ){
+        return $term_link;
+    }
+
+    $term_link = str_replace('/' . $taxonomy_slug, '', $term_link);
+
+    return $term_link;
+}
+
+function template_include( $template ) {
+
+    list( $req_uri ) = explode( '?', $_SERVER['REQUEST_URI'] );
+    $req_uri = trim($req_uri, '/');
+
+    if(preg_match("/year\/([0-9]+)\/$/",$req_uri,$matches) || preg_match("/year\/([0-9]+)\/page\/([0-9]+)$/",$req_uri,$matches)) {
+        $new_template = locate_template(array('videos.php'));
+        if (!empty($new_template)) {
+            return $new_template;
         }
     }
-    //}
-    return $content;
-}*/
+
+    return $template;
+}
+
+function parse_query( $query ) {
+
+    list( $req_uri ) = explode( '?', $_SERVER['REQUEST_URI'] );
+    $req_uri = trim($req_uri, '/');
+
+    if(preg_match("/videos.html\/?$/",$req_uri,$matches) || preg_match("/videos\/page\/([0-9]+)$/",$req_uri,$matches)) {
+        $query->is_home = false;
+        $query->is_archive = true;
+    }
+}

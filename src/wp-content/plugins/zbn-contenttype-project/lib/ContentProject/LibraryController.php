@@ -87,6 +87,7 @@ class LibraryController extends BaseController {
             ),
             'show_in_rest' => TRUE,
             'has_archive' => TRUE,
+            'rewrite' => array('slug' => 'projects'),
             'supports' => array(
                 'title',
                 'excerpt',
