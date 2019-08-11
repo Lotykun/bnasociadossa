@@ -10,3 +10,14 @@
 .article-body-data{text-align: left}
 .text-project-content {font-size: 14px;font-weight: normal;line-height: 1em;word-wrap: break-word;color: #787878;font-family: calibri, Arial, Helvetica, sans-serif;}
 .text-project-data {font-size: 17px;font-weight: normal;line-height: 1em;word-wrap: break-word;font-family: calibri, Arial, Helvetica, sans-serif;}
+
+/*.hdr-logo {display: inline-block; margin: 0px; padding: 0px}*/
+.header-div-content{display: block; width: 1050px; margin-left: auto; margin-right: auto}
+#nav-main {display: inline-block;vertical-align: top;margin-top: 25px;}
+#nav-main ul {list-style: none}
+#nav-main > ul {display: block !important; padding-left: 0px !important; margin: 0px}
+#nav-main > ul > li {border-left-style: none !important;}
+#nav-main ul {display: none; vertical-align: top; padding-left: 80px}
+.texto-main-menu-li {padding-left: 10px;border-left-color: rgb(107, 56, 133);border-left-width: 2px;border-left-style: solid;}
+.texto-main-menu-li a {font-size: 16px;font-weight: normal;line-height: 1em;word-wrap: break-word;color: rgb(107, 56, 133);font-family: calibri, Arial, Helvetica, sans-serif;text-decoration: none;}
+#logo-image {width: 80px;height: auto;}

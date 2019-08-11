@@ -160,14 +160,12 @@ class StarterSite extends Timber\Site {
         }
 
         public function getPathCode() {
-
-            return "Loty is here";
+            return get_template_directory_uri();
         }
 
         public function renderFeaturedGallery($post) {
             if (isset($post->featuredgallery) && !empty($post->featuredgallery)) {
                 $featuredGallery = $post->featuredgallery;
-                $loty = $this->do_shortcode($featuredGallery);
                 return $this->do_shortcode($featuredGallery);
             }
         }

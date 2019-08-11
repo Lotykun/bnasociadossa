@@ -1,9 +1,10 @@
 {% if menu %}
-	<ul>
+	<ul class="level-{{level}}">
 	{% for item in menu %}
-		<li class="{{ item.classes | join(' ') }}">
-			<a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
-			{% include "menu.twig" with {'menu': item.children} %}
+                {% set levelPro = level + 1 %}
+		<li class="{{ item.classes | join(' ') }} texto-main-menu-li">
+			<a target="{{ item.target }}" class="desplegable" href="{{ item.link }}">{{ item.title }}</a>
+			{% include "menu.twig" with {'menu': item.children, 'level': levelPro} %}
 		</li>
 	{% endfor %}
 	</ul>
