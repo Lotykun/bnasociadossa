@@ -10,7 +10,7 @@
         <!--<a class="skip-link screen-reader-text" href="#content">{{ _e( 'Skip to content') }}</a>-->
         <header class="header" >
             {% block header %}
-                <div class="wrapper header-div-content">
+                <div class="wrapper wrapper-div-content">
                     <!--<h1 class="hdr-logo" role="banner">
                         <a class="hdr-logo-link" href="{#{{site.url}}#}" rel="home">{#{{site.name}}#}</a>
                         <img id="logo-image" src="{#{{getPathCode()}}#}/img/LOGO.jpg" alt="Forma">
@@ -39,10 +39,12 @@
 
         {% block footer %}
             <footer id="footer">
-                {% include 'footer.twig' %}
+                <div class="wrapper-div-content">
+                    {% include 'footer.twig' %}
+                </div>
             </footer>
             {{ function('wp_footer') }}
+            {% include('js-footer.twig') %}
         {% endblock %}
-        {% include('js-footer.twig') %}
     </body>
 </html>
