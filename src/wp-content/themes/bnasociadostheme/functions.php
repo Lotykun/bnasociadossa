@@ -177,6 +177,8 @@ class StarterSite extends Timber\Site {
 
 new StarterSite();
 
+const MAX_PROJECTS_ARCHIVE = 48;
+
 //add_filter( 'template_include', 'template_include', 99 );
 //add_action( 'parse_query', 'parse_query', 99, 2 );
 add_filter('term_link', 'tag_custom_term_link', 10, 3);
@@ -205,14 +207,17 @@ function tag_custom_term_request($query){
 
 function tag_custom_term_link($term_link, $term, $taxonomy){
 
-    $taxonomy_name = 'post_tag';
-    $taxonomy_slug = 'tag';
-
-    if ( strpos($term_link, $taxonomy_slug) === FALSE || $taxonomy != $taxonomy_name ){
-        return $term_link;
+    if ($taxonomy === 'category'){
+        if ( strpos($term_link, 'category') === FALSE ){
+            return $term_link;
+        }
+        $term_link = str_replace('/' . 'category', '', $term_link);
+    } else if ($taxonomy === 'post_tag') {
+        if ( strpos($term_link, 'tag') === FALSE ){
+            return $term_link;
+        }
+        $term_link = str_replace('/' . 'tag', '', $term_link);
     }
-
-    $term_link = str_replace('/' . $taxonomy_slug, '', $term_link);
 
     return $term_link;
 }

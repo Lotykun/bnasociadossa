@@ -5,9 +5,9 @@
 
 {% block content %}
     <div class="wrapper-div-content wrapper-div-content-archive">
-        <p>{{termTitle}}</p>
+        <h1></h1>
         {{ parent() }}
-        <h1>{{title}}</h1>
+        <p></p>
     </div>
 {% endblock %}
 
@@ -19,21 +19,29 @@
                 $( "article a" ).hover(
                     function() {
                         var data = $(this).data("post");
-                        $(".wrapper-div-content-archive h1").text(data.post_title);
+                        $(".wrapper-div-content-archive p").text(data.post_title);
                     }, function() {
-                        $(".wrapper-div-content-archive h1").text("");
+                        $(".wrapper-div-content-archive p").text("");
                     }
                 );
                 $( "a.desplegable" ).click(
                     function() {
-                        var term = $(this).text();
-                        $('.wrapper-div-content-archive p').text(term);
-                        $("article").fadeTo('fast', 0);
-                        $("article[data-term='" + term + "']").fadeTo('fast', 1);
+                        if (!$(this).hasClass('disabled')) {
+                            var term = $(this).text();
+                            show_thumbnails_by_term(term);
+                        }
                         return false;
                     }
                 );
+                {% if defaultTerm %}
+                    show_thumbnails_by_term("{{defaultTerm}}");
+                {% endif %}
             });
+            function show_thumbnails_by_term(term) {
+                $('.wrapper-div-content-archive h1').text(term);
+                $("article").fadeTo('fast', 0);
+                $("article." + term ).fadeTo('fast', 1);
+            }
         })(jQuery);
     </script>
 {% endblock %}

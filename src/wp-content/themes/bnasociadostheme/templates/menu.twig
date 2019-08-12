@@ -2,8 +2,10 @@
 	<ul class="level-{{level}}">
 	{% for item in menu %}
                 {% set levelPro = level + 1 %}
+                {% set disabledClass = (item.link == '#' or item.link == '' or item.link == ' ') ? ' disabled' : '' %}
+                {% set hrefAttr = (item.link != '#' and item.link != '' and item.link != ' ') ? ' href="' ~ item.link ~ '"' : '' %}
 		<li class="{{ item.classes | join(' ') }} texto-main-menu-li">
-			<a target="{{ item.target }}" class="desplegable" href="{{ item.link }}">{{ item.title }}</a>
+			<a target="{{ item.target }}" class="desplegable{{disabledClass}}"{{hrefAttr}}>{{ item.title }}</a>
 			{% include "menu.twig" with {'menu': item.children, 'level': levelPro} %}
 		</li>
 	{% endfor %}

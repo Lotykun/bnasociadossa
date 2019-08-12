@@ -36,7 +36,7 @@ if ( is_day() ) {
 }
 
 $args = array(
-    'posts_per_page' => -1,
+    'posts_per_page' => MAX_PROJECTS_ARCHIVE,
     'post_type' => 'project'
 );
 

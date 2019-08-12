@@ -26,14 +26,21 @@ if ( is_day() ) {
 } else if ( is_year() ) {
 	$context['title'] = 'Archive: ' . get_the_date( 'Y' );
 } else if ( is_tag() ) {
-	$context['title'] = single_tag_title( '', false );
-} else if ( is_category() ) {
-	//$context['title'] = single_cat_title( '', false );
+	$context['title'] = null;
 	//array_unshift( $templates, 'archive-' . get_query_var( 'cat' ) . '.twig' );
-        $context['termTitle'] = single_cat_title( '', false );
+        $context['defaultTerm'] = single_tag_title( '', false );
         array_unshift( $templates, 'archive-project.twig' );
         $args = array(
-            'posts_per_page' => -1,
+            'posts_per_page' => MAX_PROJECTS_ARCHIVE,
+            'post_type' => 'project'
+        );
+} else if ( is_category() ) {
+	$context['title'] = null;
+	//array_unshift( $templates, 'archive-' . get_query_var( 'cat' ) . '.twig' );
+        $context['defaultTerm'] = single_cat_title( '', false );
+        array_unshift( $templates, 'archive-project.twig' );
+        $args = array(
+            'posts_per_page' => MAX_PROJECTS_ARCHIVE,
             'post_type' => 'project'
         );
 } else if ( is_post_type_archive() ) {
