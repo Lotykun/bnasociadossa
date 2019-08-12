@@ -6,7 +6,7 @@
 .article-contain{display: inline-block;min-height: 25px;vertical-align: top}
 .article-gallery{width: 15%;background-color: #eef2d0;}
 .article-main-media{width: 50%;background-color: #d0f2d7}
-.article-body{width: 34%;background-color: #f2d0db;}
+/*.article-body{width: 34%;background-color: #f2d0db;}*/
 .article-body-data{text-align: left}
 .text-project-content {font-size: 14px;font-weight: normal;line-height: 1em;word-wrap: break-word;color: #787878;font-family: calibri, Arial, Helvetica, sans-serif;}
 .text-project-data {font-size: 17px;font-weight: normal;line-height: 1em;word-wrap: break-word;font-family: calibri, Arial, Helvetica, sans-serif;}
@@ -16,6 +16,15 @@
 .wrapper-div-content-archive{margin-top: 90px; width: 1008px;}
 .wrapper-div-content-archive p{min-height: 55px; font-size: 17px; font-weight: bold;line-height: 1em;word-wrap: break-word;font-style: normal;font-family: calibri, Arial, Helvetica, sans-serif;text-align: left;}
 .wrapper-div-content-archive h1{min-height: 30px; font-size: 20px;font-weight: bold;line-height: 1em;word-wrap: break-word;color: rgb(255,102,204);font-style: normal;font-family: calibri, Arial, Helvetica, sans-serif;text-align: left; width: 170px;margin-left: auto;margin-right: auto;}
+
+.wrapper-div-content-awards{width: 75%; margin-left: auto; margin-right: auto; height: 550px; overflow: hidden}
+.awards-page-wrapper{margin-top: 15px}
+.awards-page-table tr td:first-child{width: 25%}
+.awards-page-table tr td{width: 75%; padding-bottom: 10px; vertical-align: top; font-size: 16px; font-weight: normal; line-height: 1em; word-wrap: break-word; font-family: calibri, Arial, Helvetica, sans-serif; font-weight: normal;}
+.awards-page-h1 {float: right;margin: -100px 0px 0px 0px; font-size: 20px;font-weight: bold;line-height: 1em;word-wrap: break-word;color: rgb(107, 56, 133);font-style: normal;font-family: calibri, Arial, Helvetica, sans-serif;}
+.awards-page-arrows {margin-top: 5px;}
+.awards-page-arrows p{margin: 0; display: inline-block; font-size: 80px;font-weight: bold;line-height: 1em;word-wrap: break-word;color: rgb(107, 56, 133);font-family: calibri, Arial, Helvetica, sans-serif;cursor:pointer;-webkit-transform: rotate(-90deg);-moz-transform: rotate(-90deg);transform: rotate(-90deg);}
+.awards-page-arrows p:hover{color:rgb(255,102,204);}
 
 #nav-main {display: inline-block;vertical-align: top;margin-top: 25px;}
 #nav-main ul {list-style: none}
@@ -34,3 +43,5 @@
 .showUP:hover{transform:scale(1.2);-moz-transform:scale(1.2);-webkit-transform:scale(1.2);-o-transform:scale(1.2);-ms-transform:scale(1.2);}
 
 .desplegable{cursor: pointer;}
+
+#footer {position: absolute;right: 0;bottom: 0;left: 0;}
