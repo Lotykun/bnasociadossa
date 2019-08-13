@@ -26,6 +26,12 @@
 .awards-page-arrows p{margin: 0; display: inline-block; font-size: 80px;font-weight: bold;line-height: 1em;word-wrap: break-word;color: rgb(107, 56, 133);font-family: calibri, Arial, Helvetica, sans-serif;cursor:pointer;-webkit-transform: rotate(-90deg);-moz-transform: rotate(-90deg);transform: rotate(-90deg);}
 .awards-page-arrows p:hover{color:rgb(255,102,204);}
 
+.wrapper-div-content-contact{width: 35%; margin-left: auto; margin-right: auto; padding: 50px; background-color: rgb(199, 199, 199); margin-top: 70px}
+.wrapper-div-content-contact p{font-size: 16px;font-weight: normal;line-height: 1em;word-wrap: break-word;color: rgb(107, 56, 133);font-family: calibri, Arial, Helvetica, sans-serif;}
+.wrapper-div-content-contact a{text-decoration: none;font-size: 16px;font-weight: normal;line-height: 1em;word-wrap: break-word;color: rgb(107, 56, 133);font-family: calibri, Arial, Helvetica, sans-serif;}
+.wrapper-div-content-contact a:hover{color:rgb(255,102,204);}
+.contact-page-h1 {float: right;margin: -170px 0px 0px 0px; font-size: 20px;font-weight: bold;line-height: 1em;word-wrap: break-word;color: rgb(107, 56, 133);font-style: normal;font-family: calibri, Arial, Helvetica, sans-serif;}
+
 #nav-main {display: inline-block;vertical-align: top;margin-top: 25px;}
 #nav-main ul {list-style: none}
 #nav-main > ul {display: block !important; padding-left: 0px !important; margin: 0px}
@@ -42,6 +48,7 @@
 .showUP{transition:all 1s ease 0s;-moz-transition:all 1s ease 0s;-webkit-transition:all 1s ease 0s;-o-transition:all 1s ease 0s;-ms-transition:all 1s ease 0s;}
 .showUP:hover{transform:scale(1.2);-moz-transform:scale(1.2);-webkit-transform:scale(1.2);-o-transform:scale(1.2);-ms-transform:scale(1.2);}
 
+.desplegable:hover{color:rgb(255,102,204);}
 .desplegable{cursor: pointer;}
 
 #footer {position: absolute;right: 0;bottom: 0;left: 0;}
