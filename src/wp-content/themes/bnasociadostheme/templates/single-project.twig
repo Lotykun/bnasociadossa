@@ -1,28 +1,32 @@
 {% extends "base.twig" %}
 
 {% block content %}
-    <div class="content-wrapper">
+    <div class="content-wrapper wrapper-div-content">
         <article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
             <section class="article-content">
-                <h1 class="article-h1">{{ post.title }}</h1>
+                <!--<h1 class="article-h1 single-page-h1">{{ post.title }}</h1>-->
                 <!--<a href="{{ post.link }}">{{ _e('edit') }}</a>-->
                 <!--<p class="blog-author">
                     <span>By</span><a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span> {{ post.date }}
                 </p>-->
+                <div class="article-project-data">
+                    <h1 class="article-h1">{{ post.title }}</h1>
+                    <p>{{ post.terms('category') | join(' ') }}</p>
+                    <p>{{ post.terms('post_tag') | join(' ') }}</p>
+                </div>
                 <div class="article-contain article-gallery">
                     <div class="single-post-media-wrap-gallery">
                         <div class="single-post-media-gallery">
                             {{renderFeaturedGallery(post)}}
                         </div>
                     </div>
-                    {#{{ post_gallery }}#}
                 </div>
                 <div class="article-contain article-main-media">
                     <!--<img src="{{ post.thumbnail.src|resize(1200, 300) }}">-->
                     <img src="{{ post.thumbnail.src}}" width="600px" height="500px">
                 </div>
-                <div class="article-contain article-body">
-                    <div class="article-body-data text-project-data">
+                <div class="article-body article-contain article-project-body">
+                    <div class="article-project-body-data text-project-data">
                         <table>
                             <tr>
                               <th>Promotor:</th>
@@ -38,7 +42,7 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="article-body-content text-project-content">
+                    <div class="article-project-body-content text-project-content">
                         {{post.content}}
                     </div>
                 </div>

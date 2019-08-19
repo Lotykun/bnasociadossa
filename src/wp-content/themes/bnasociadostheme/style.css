@@ -3,11 +3,17 @@
  * Description: Starter Theme to use with Timber
  * Author: Upstatement and YOU!
 */
-.article-contain{display: inline-block;min-height: 25px;vertical-align: top}
-.article-gallery{width: 15%;background-color: #eef2d0;}
-.article-main-media{width: 50%;background-color: #d0f2d7}
-/*.article-body{width: 34%;background-color: #f2d0db;}*/
-.article-body-data{text-align: left}
+.post-type-project{margin-top: 40px}
+.article-contain{display: inline-block;vertical-align: top}
+.article-gallery{width: 10%;}
+.article-gallery div div div figure:first-child{margin-top: 0}
+.article-gallery figure img{width:80px;height:80px}
+.article-main-media{/*width: 50%;background-color: #d0f2d7*/}
+.article-project-body{width: 32%;}
+.article-project-data{float: right;margin: -170px 0px 0px 0px;}
+.article-project-data p{margin-top: 5px;margin-bottom: 5px;text-align: right;font-size: 20px;font-weight: bold;line-height: 1em;word-wrap: break-word;color: rgb(107, 56, 133);font-style: normal;font-family: calibri, Arial, Helvetica, sans-serif;}
+.article-project-data h1{margin-bottom: 5px;text-align: right;font-size: 20px;font-weight: bold;line-height: 1em;word-wrap: break-word;color: rgb(107, 56, 133);font-style: normal;font-family: calibri, Arial, Helvetica, sans-serif;}
+.article-project-body-data{text-align: left}
 .text-project-content {font-size: 14px;font-weight: normal;line-height: 1em;word-wrap: break-word;color: #787878;font-family: calibri, Arial, Helvetica, sans-serif;}
 .text-project-data {font-size: 17px;font-weight: normal;line-height: 1em;word-wrap: break-word;font-family: calibri, Arial, Helvetica, sans-serif;}
 
