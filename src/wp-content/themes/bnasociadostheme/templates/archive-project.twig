@@ -17,14 +17,16 @@
         (function($) {
             $(document).ready(function(){ 
                 $( "article a" ).hover(
-                    function() {
-                        var data = $(this).data("post");
-                        $(".wrapper-div-content-archive p").text(data.post_title);
-                    }, function() {
-                        $(".wrapper-div-content-archive p").text("");
-                    }
+                        function() {
+                            if ($(this).parent().css('opacity') === "1") {
+                                var data = $(this).data("post");
+                                $(".wrapper-div-content-archive p").text(data.post_title);
+                            }
+                        }, function() {
+                            $(".wrapper-div-content-archive p").text("");
+                        }
                 );
-                $( "a.desplegable" ).click(
+                $( "a.clickable" ).click(
                     function() {
                         if (!$(this).hasClass('disabled')) {
                             var term = $(this).text();
