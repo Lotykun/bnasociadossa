@@ -16,6 +16,7 @@
                         <img id="logo-image" src="{#{{getPathCode()}}#}/img/LOGO.jpg" alt="Forma">
                     </h1>-->
                     <img id="logo-image" src="{{getPathCode()}}/img/LOGO.jpg" alt="Forma">
+                    <div class="lang-switcher">{% do fn('pll_the_languages', {'show_flags': 1,'show_names': 0, 'hide_current': 1}) %}</div>
                     <nav id="nav-main" class="nav-main" role="navigation">
                         {% include "menu.twig" with {'menu': menu.get_items, 'level': 1} %}
                     </nav><!-- #nav -->

@@ -38,14 +38,14 @@
 .wrapper-div-content-contact a:hover{color:rgb(255,102,204);}
 .contact-page-h1 {float: right;margin: -170px 0px 0px 0px; font-size: 20px;font-weight: bold;line-height: 1em;word-wrap: break-word;color: rgb(107, 56, 133);font-style: normal;font-family: calibri, Arial, Helvetica, sans-serif;}
 
-#nav-main {display: inline-block;vertical-align: top;margin-top: 25px;}
+#nav-main {display: inline-block;vertical-align: top;margin-top: 25px;margin-left: -30px}
 #nav-main ul {list-style: none}
 #nav-main > ul {display: block !important; padding-left: 0px !important; margin: 0px}
 #nav-main > ul > li {border-left-style: none !important;}
 #nav-main ul {display: none; vertical-align: top; padding-left: 80px}
 .texto-main-menu-li {padding-left: 10px;border-left-color: rgb(107, 56, 133);border-left-width: 2px;border-left-style: solid;}
 .texto-main-menu-li a {font-size: 16px;font-weight: normal;line-height: 1em;word-wrap: break-word;color: rgb(107, 56, 133);font-family: calibri, Arial, Helvetica, sans-serif;text-decoration: none;}
-#logo-image {width: 80px;height: auto;}
+#logo-image {width: 80px;height: auto;vertical-align: top}
 
 .tease-project {display: inline-block}
 .tease-project img {width: 80px;height: 80px}
@@ -56,5 +56,8 @@
 
 .desplegable:hover{color:rgb(255,102,204);}
 .desplegable{cursor: pointer;}
+
+.lang-switcher{display: inline;margin-left: 5px}
+.lang-item {display: inline;list-style: none;}
 
 #footer {position: absolute;right: 0;bottom: 0;left: 0;}
