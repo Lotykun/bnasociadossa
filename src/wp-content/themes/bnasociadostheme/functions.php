@@ -183,6 +183,7 @@ const MAX_PROJECTS_ARCHIVE = 48;
 //add_action( 'parse_query', 'parse_query', 99, 2 );
 add_filter('term_link', 'tag_custom_term_link', 10, 3);
 add_filter('request', 'tag_custom_term_request', 1, 1 );
+add_filter('timber/context', 'add_to_context');
 
 function tag_custom_term_request($query){
 
@@ -220,6 +221,21 @@ function tag_custom_term_link($term_link, $term, $taxonomy){
     }
 
     return $term_link;
+}
+
+function add_to_context( $context ) {
+    switch (pll_current_language()){
+        case 'es':
+            $context['menu'] = new \Timber\Menu( 'principal' );
+        break;
+        case 'en':
+            $context['menu'] = new \Timber\Menu( 'main' );
+        break;
+        default:
+            $context['menu'] = new \Timber\Menu( 'principal' );
+        break;
+    }
+    return $context;
 }
 
 function template_include( $template ) {
