@@ -1,11 +1,11 @@
 <?php
-namespace BN\TaxonomyStatus;
+namespace BN\TaxonomyYear;
 
 class ViewRenderer {
     protected $twig;
     
     public function renderView($viewFile, array $params = array()) {
-        $templates = BN_TAXONOMYSTATUS_ROOT.'/view/';
+        $templates = BN_TAXONOMYYEAR_ROOT.'/view/';
 
         $loader = new \Twig_Loader_Filesystem($templates);
         $this->twig = new \Twig_Environment($loader);

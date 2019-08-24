@@ -1,13 +1,13 @@
 <?php
 
 /*
-Plugin Name: BN TaxonomyType Status Plugin
+Plugin Name: BN TaxonomyType Project Status Plugin
 Plugin URI: http://www.bnasociados.com/
-Description: Plugin que genera una nueva taxonomia llamada Estado.
+Description: Plugin que genera una nueva taxonomia llamada Estado del Proyecto.
 Version: 1.0.0
 Author: Juan Lotito
 Author Email: lotykun@gmail.com
-Text Domain: zbn-taxonomytype-status
+Text Domain: zbn-taxonomytype-project_status
 Domain Path: /languages
 License: GPLv2
 */
@@ -30,23 +30,23 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-namespace BN\TaxonomyStatus;
-use BN\TaxonomyStatus\Autoload;
+namespace BN\TaxonomyProjectStatus;
+use BN\TaxonomyProjectStatus\Autoload;
 
-define('BN_TAXONOMYSTATUS_PLUGIN_FILE', __FILE__ );
-define('BN_TAXONOMYSTATUS_ROOT', dirname( __FILE__ ));
-define('BN_TAXONOMYSTATUS_NAMESPACE', "TaxonomyStatus");
-define('BN_TAXONOMYSTATUS_TAX_NAME_SING', __('status', 'zbn-taxonomytype-status'));
+define('BN_TAXONOMYPROJECTSTATUS_PLUGIN_FILE', __FILE__ );
+define('BN_TAXONOMYPROJECTSTATUS_ROOT', dirname( __FILE__ ));
+define('BN_TAXONOMYPROJECTSTATUS_NAMESPACE', "TaxonomyProjectStatus");
+define('BN_TAXONOMYPROJECTSTATUS_TAX_NAME_SING', __('project_status', 'bn-taxonomytype-project-status'));
 
-if (file_exists(BN_TAXONOMYSTATUS_ROOT.'/lib/Autoload.php')) {
-    require_once(BN_TAXONOMYSTATUS_ROOT.'/lib/Autoload.php');
+if (file_exists(BN_TAXONOMYPROJECTSTATUS_ROOT.'/lib/Autoload.php')) {
+    require_once(BN_TAXONOMYPROJECTSTATUS_ROOT.'/lib/Autoload.php');
 }
-if (file_exists(BN_TAXONOMYSTATUS_ROOT.'/vendor/autoload.php')) {
-    require_once(BN_TAXONOMYSTATUS_ROOT.'/vendor/autoload.php');
+if (file_exists(BN_TAXONOMYPROJECTSTATUS_ROOT.'/vendor/autoload.php')) {
+    require_once(BN_TAXONOMYPROJECTSTATUS_ROOT.'/vendor/autoload.php');
 }
 if( ! class_exists( 'WP_List_Table' ) ) {
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
-$Autoloader = Autoload::getInstance(BN_TAXONOMYSTATUS_ROOT);
-$zbntaxstatus = TaxonomyStatus::getInstance();
+$Autoloader = Autoload::getInstance(BN_TAXONOMYPROJECTSTATUS_ROOT);
+$zbntaxprojectstatus = TaxonomyProjectStatus::getInstance();

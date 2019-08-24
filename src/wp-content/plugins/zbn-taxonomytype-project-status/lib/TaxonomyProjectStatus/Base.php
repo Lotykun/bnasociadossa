@@ -1,7 +1,7 @@
 <?php
-namespace BN\TaxonomyStatus;
+namespace BN\TaxonomyProjectStatus;
 
-use BN\TaxonomyStatus\Helpers;
+use BN\TaxonomyProjectStatus\Helpers;
 class Base {
     protected $controller;
 
@@ -13,7 +13,6 @@ class Base {
     public function addActions() {
         add_action('admin_enqueue_scripts', array(&$this, 'adminEnqueueScripts')); 
         add_action('init',array(&$this,'executeLibraryController'),100);
-        add_action('admin_menu', array($this, 'adminMenu'));
         add_action( 'plugins_loaded', array($this, 'load_plugin_textdomain'));
     }
     
@@ -21,19 +20,9 @@ class Base {
         add_filter('pre_insert_term', array(&$this,'disallow_insert_term'), 10, 2);
     }
     
-    public function adminMenu() {
-        add_options_page(
-            __('Populate Secondary Channels', 'bn-taxonomytype-status'),
-            __('Populate Secondary Channels', 'bn-taxonomytype-status'),
-            'manage_options',
-            'populate'.BN_TAXONOMYSTATUS_NAMESPACE,
-            array($this, 'executeAdminController')
-        );
-    }
-    
     public function adminEnqueueScripts() {
-        wp_register_script('bn-taxonomytype-status', Helpers::jsUrl('zbn-taxonomytype-status.js'), array('jquery'), '20170604', false);
-        wp_register_style('bn-taxonomytype-status', Helpers::cssUrl('zbn-taxonomytype-status.css'), array(), '20170604');
+        wp_register_script('bn-taxonomytype-status', Helpers::jsUrl('zbn-taxonomytype-project-status.js'), array('jquery'), '20170604', false);
+        wp_register_style('bn-taxonomytype-status', Helpers::cssUrl('zbn-taxonomytype-project-status.css'), array(), '20170604');
     }
     
     public function executeLibraryController() {
@@ -43,8 +32,8 @@ class Base {
         } else if (isset($_POST['action'])) {
             $action = $_POST['action'];
         } else if (isset($_GET['page'])) {
-            if (strpos($_GET['page'], BN_TAXONOMYSTATUS_NAMESPACE) !== false) {
-                $action = str_replace(BN_TAXONOMYSTATUS_NAMESPACE, "", $_GET['page']);
+            if (strpos($_GET['page'], BN_TAXONOMYPROJECTSTATUS_NAMESPACE) !== false) {
+                $action = str_replace(BN_TAXONOMYPROJECTSTATUS_NAMESPACE, "", $_GET['page']);
             }
         } else if (!isset($_GET['page']) && !isset($_GET['action'])) {
             $action = "init";
@@ -60,8 +49,8 @@ class Base {
         } else if (isset($_POST['action']) && !empty($_POST['action']) && $_POST['action'] != "-1") {
             $action = $_POST['action'];
         } else if (isset($_GET['page'])) {
-            if (strpos($_GET['page'], BN_TAXONOMYSTATUS_NAMESPACE) !== false) {
-                $action = str_replace(BN_TAXONOMYSTATUS_NAMESPACE, "", $_GET['page']);
+            if (strpos($_GET['page'], BN_TAXONOMYPROJECTSTATUS_NAMESPACE) !== false) {
+                $action = str_replace(BN_TAXONOMYPROJECTSTATUS_NAMESPACE, "", $_GET['page']);
             }
         } else if (!isset($_GET['page']) && !isset($_GET['action'])) {
             $action = "init";
@@ -71,7 +60,7 @@ class Base {
     }
     
     public function load_plugin_textdomain() {
-        load_plugin_textdomain( 'bn-taxonomytype-status', FALSE, '/bn-taxonomytype-status/languages/' );
+        load_plugin_textdomain( 'bn-taxonomytype-status', FALSE, '/zbn-taxonomytype-status/languages/' );
     }
     
     public function disallow_insert_term($term, $taxonomy) {

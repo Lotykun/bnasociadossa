@@ -1,12 +1,12 @@
 <?php
-namespace BN\TaxonomyStatus;
+namespace BN\TaxonomyProjectStatus;
 
-class TaxonomyStatus {
+class TaxonomyProjectStatus {
     static $instance = null;
     
     static function & getInstance() {
         if (null == self::$instance) {
-            self::$instance = new TaxonomyStatus();
+            self::$instance = new TaxonomyProjectStatus();
         }
 
         return self::$instance;

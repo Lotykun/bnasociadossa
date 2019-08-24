@@ -1,7 +1,7 @@
 <?php
-namespace BN\TaxonomyStatus;
+namespace BN\TaxonomyProjectStatus;
 
-use BN\TaxonomyStatus\Helpers;
+use BN\TaxonomyProjectStatus\Helpers;
 abstract class BaseController {
     protected $action = '';
     protected $params = array();
@@ -64,7 +64,7 @@ abstract class BaseController {
     public function getParams() {
         return array_merge( array(
             'messages' => $this->getMessages(),
-            'assets_url' => plugins_url('assets',BN_TAXONOMYSTATUS_PLUGIN_FILE),
+            'assets_url' => plugins_url('assets',BN_TAXONOMYPROJECTSTATUS_PLUGIN_FILE),
             'domain' => DOMAIN_CURRENT_SITE,
             'protocol' => PROTOCOL_CURRENT_SITE,
             'webName' => get_bloginfo( 'name' ),

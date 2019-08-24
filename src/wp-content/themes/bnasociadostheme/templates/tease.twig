@@ -1,4 +1,8 @@
-<article class="tease tease-{{post.post_type}} {{ post.terms('category') | join(' ') ~ ' ' ~ post.terms('post_tag') | join(' ') }}" id="tease-{{post.ID}}">
+<article class="tease tease-{{post.post_type}} 
+    {{ post.terms('category') | join(';') | replace(' ', '-') | replace(';', ' ') ~ ' ' ~ 
+        post.terms('year') | join(';') | replace(' ', '-') | replace(';', ' ') ~ ' ' ~ 
+        post.terms('project_status') | join(';') | replace(' ', '-') | replace(';', ' ') }}" 
+    id="tease-{{post.ID}}">
 	{% block content %}
 		<h2 class="h2"><a href="{{post.link}}">{{post.title}}</a></h2>
 		<p>{{post.preview}}</p>

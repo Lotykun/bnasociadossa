@@ -195,12 +195,11 @@ function tag_custom_term_request($query){
         $name = $query['name'];
     }
 
-    $term = get_term_by('slug', $name, 'post_tag'); // get the current term to make sure it exists
+    $term = get_term_by('slug', $name, 'project_status'); // get the current term to make sure it exists
 
     if (isset($name) && $term && !is_wp_error($term)){
         unset($query['category_name']);
-        unset($query['year']);
-        $query['tag'] = $name;
+        $query['project_status'] = $name;
     }
 
     return $query;

@@ -29,7 +29,7 @@
                 $( "a.clickable" ).click(
                     function() {
                         if (!$(this).hasClass('disabled')) {
-                            var term = $(this).text();
+                            var term = $(this).text().replace(" ","-");
                             show_thumbnails_by_term(term);
                         }
                         return false;
@@ -40,7 +40,7 @@
                 {% endif %}
             });
             function show_thumbnails_by_term(term) {
-                $('.wrapper-div-content-archive h1').text(term);
+                $('.wrapper-div-content-archive h1').text(term.replace("-"," "));
                 $("article").fadeTo('fast', 0);
                 $("article." + term ).fadeTo('fast', 1);
             }

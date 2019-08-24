@@ -1,7 +1,7 @@
 <?php
 /*EXTERNAL FUNCTIONS FOR THE PLUGIN... IN ORDER TO CALL THEM IS Helpers::function_name*/
-namespace BN\TaxonomyStatus;
-use BN\TaxonomyStatus\ViewRenderer;
+namespace BN\TaxonomyProjectStatus;
+use BN\TaxonomyProjectStatus\ViewRenderer;
 class Helpers {
     private static $_settings = null;
     
@@ -61,14 +61,14 @@ class Helpers {
     }
     private static function getPluginPath() {
         $pluginsPath = DIRECTORY_SEPARATOR . 'wp-content' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR;
-        return substr( BN_TAXONOMYSTATUS_PLUGIN_FILE, strpos( BN_TAXONOMYSTATUS_PLUGIN_FILE, $pluginsPath ) + strlen( $pluginsPath ) );
+        return substr( BN_TAXONOMYPROJECTSTATUS_PLUGIN_FILE, strpos( BN_TAXONOMYPROJECTSTATUS_PLUGIN_FILE, $pluginsPath ) + strlen( $pluginsPath ) );
     }
     public static function getDefaultSettings() {
-        $defaultSettings = require( plugin_dir_path(BN_TAXONOMYSTATUS_PLUGIN_FILE) . 'settings.php' );
+        $defaultSettings = require( plugin_dir_path(BN_TAXONOMYPROJECTSTATUS_PLUGIN_FILE) . 'settings.php' );
         return $defaultSettings;
     }
     public static function pluginUrl( $uri = '' ) {
-        return apply_filters( 'bn_taxonomytype_status_plugin_url', plugins_url( $uri, BN_TAXONOMYSTATUS_PLUGIN_FILE ), $uri );
+        return apply_filters( 'bn_taxonomytype_project_status_plugin_url', plugins_url( $uri, BN_TAXONOMYPROJECTSTATUS_PLUGIN_FILE ), $uri );
     }
     public static function getPluginUrl() {
         return self::pluginUrl( '' );

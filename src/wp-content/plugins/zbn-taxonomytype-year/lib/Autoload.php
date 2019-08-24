@@ -1,5 +1,5 @@
 <?php
-namespace BN\TaxonomyStatus;
+namespace BN\TaxonomyYear;
 
 use BN\Core\Autoload as AutoloadCore;
 
