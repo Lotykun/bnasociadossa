@@ -67,24 +67,9 @@ function validate_post_data() {
     }
     /*END Categories*/
     
-    /* Tags*/
-    if (validation) {
-        var tagsChecked = jQuery("#tagsdiv-post_tag ul.tagchecklist li");
-        tagsChecked.each(function(index,element){
-            var tag = jQuery(element).clone().children().remove().end().text().trim();
-            if (validationTags.indexOf(tag) == -1) {
-                var error = [];
-                error["metabox"] = "#tagsdiv-post_tag";
-                error["message"] = tag + ": " +validationLiterals.TagNotExist;
-                errors.push(error);
-            }
-        });
-    }
-    /*END Tags*/
-    
-    /* Secondary Channels*/
-    if (validation) {
-        var secchChecked = jQuery("#tagsdiv-second_channel ul.tagchecklist li");
+    /* Status*/
+    //if (validation) {
+        var statusChecked = jQuery("#tagsdiv-second_channel ul.tagchecklist li");
         secchChecked.each(function(index,element){
             var secch = jQuery(element).clone().children().remove().end().text().trim();
             if (validationSecch.indexOf(secch) == -1) {
@@ -94,8 +79,8 @@ function validate_post_data() {
                 errors.push(error);
             }
         });
-    }
-    /*END Secondary Channels*/
+    //}
+    /*END Status*/
     
     return errors;
 }

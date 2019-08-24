@@ -184,6 +184,7 @@ const MAX_PROJECTS_ARCHIVE = 48;
 add_filter('term_link', 'tag_custom_term_link', 10, 3);
 add_filter('request', 'tag_custom_term_request', 1, 1 );
 add_filter('timber/context', 'add_to_context');
+add_action('admin_menu', 'adminMenu');
 
 function tag_custom_term_request($query){
 
@@ -260,5 +261,21 @@ function parse_query( $query ) {
     if(preg_match("/videos.html\/?$/",$req_uri,$matches) || preg_match("/videos\/page\/([0-9]+)$/",$req_uri,$matches)) {
         $query->is_home = false;
         $query->is_archive = true;
+    }
+}
+
+function adminMenu() {
+    $user = wp_get_current_user();
+    $enable_roles = array('administrator');
+    if(!array_intersect($enable_roles, $user->roles ) ) {
+        /*remove_post_type_support("post", 'custom-fields');
+        remove_post_type_support("post", 'post-formats');
+        remove_post_type_support("post", 'revisions');
+        remove_post_type_support("post", 'comments');
+        remove_post_type_support("post", 'trackbacks');*/
+        remove_menu_page( 'edit-comments.php' );
+        remove_menu_page( 'tools.php' );
+        remove_menu_page( 'edit.php?post_type=page' );
+        remove_menu_page( 'edit.php' );
     }
 }

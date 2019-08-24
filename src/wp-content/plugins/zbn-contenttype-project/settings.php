@@ -107,6 +107,5 @@ return array(
         "NoPermissionTags" => __('Your role does not have permission to add new tags. Plase choose an exisiting one'),
         "NoThumbnail" => __("Main Image is not set", Helpers::LOCALE),
         "TagNotExist" => __("is a Tag which not exist, your role cannot create new ones", Helpers::LOCALE),
-        "SecchNotExist" => __("is a Secondary Channel which not exist, your role cannot create new ones", Helpers::LOCALE),
     )
 );
