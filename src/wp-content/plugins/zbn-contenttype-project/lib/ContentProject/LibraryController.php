@@ -90,7 +90,6 @@ class LibraryController extends BaseController {
             'rewrite' => array('slug' => 'projects'),
             'supports' => array(
                 'title',
-                'excerpt',
                 'editor',
                 'thumbnail',
                 'author'),

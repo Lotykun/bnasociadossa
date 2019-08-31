@@ -19,7 +19,7 @@ class Base {
         add_action('save_post_project', array(&$this,'save_metadata'));
         add_action('pre_get_posts', array(&$this,'include_noname_query'));
         //add_action('admin_menu', array($this, 'hide_options'));
-        add_action('admin_enqueue_scripts', array(&$this, 'enqueue_custom_scripts'));
+        add_action('enqueue_block_editor_assets', array(&$this, 'enqueue_custom_scripts'));
     }
 
     public function addFilters() {
@@ -151,9 +151,9 @@ class Base {
                 wp_enqueue_script('costum-post-js', Helpers::jsUrl( 'uedm-contenttype-post-hidetag.js' ), array('jquery'), '20171904');
             }
         }*/
-        if ($post && in_array($post->post_type, array('project')) && in_array($hook, array('post.php', 'post-new.php'))){
+        if ($post && in_array($post->post_type, array('project'))){
             $literals = Helpers::getOption(BN_CONTENTPROJECT_NAMESPACE."_validationliterals");
-            wp_register_script('validation-project-js', Helpers::jsUrl( 'zbn-contenttype-project-validation.js' ), array('jquery'), '20170604', false);
+            wp_register_script('validation-project-js', Helpers::jsUrl( 'zbn-contenttype-project-validation.js' ), array(), '20170604', false);
             wp_localize_script('validation-project-js', 'validationLiterals', $literals);
             wp_localize_script('validation-project-js', 'validationRoles', $disable_roles);
             wp_localize_script('validation-project-js', 'validationUserRoles', $user->roles);
