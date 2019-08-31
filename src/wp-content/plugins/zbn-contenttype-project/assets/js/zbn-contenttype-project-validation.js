@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 jQuery("document").ready(function() {
-    jQuery("form[name=post]").submit(function() {
+    /*jQuery("form[name=post]").submit(function() {
         jQuery("div.notice").remove();
         jQuery(".error").removeClass("error");
         var errors = validate_post_data();
@@ -20,7 +20,27 @@ jQuery("document").ready(function() {
         }
         window.scrollTo(0,0);
         return result;
+    });*/
+    //wp.data.dispatch( 'core/notices' ).createErrorNotice( 'Please enter a date to continue.', { id: 'LOCK_NOTICE',isDismissible: true} ) ;
+    const { getEditedPostAttribute } = wp.data.select( 'core/editor' );
+    const title = getEditedPostAttribute( 'title' );
+    let pageTemplate;
+    wp.data.subscribe(() => {
+	const newPageTemplate = wp.data.select( 'core/editor' ).getEditedPostAttribute( 'title' );
+	if ( pageTemplate !== newPageTemplate ) {
+            console.log( 'Page template has changed!' );
+            //pageTemplate = newPageTemplate;
+	}
     });
+    
+    
+    
+    /*const { getEditedPostAttribute } = wp.data.select( 'core/editor' );
+    const title = getEditedPostAttribute( 'title' );
+    const content = getEditedPostAttribute( 'content' );*/
+    /*wp.data.dispatch( 'core/notices' ).createErrorNotice( 'LOTY IS HERE');
+    wp.data.dispatch( 'core/notices' ).createWarningNotice( 'LOTy IS HERE 2' );
+    wp.data.dispatch( 'core/notices' ).createSuccessNotice( 'LOTy IS HERE 3' );*/
 });
 
 function render_admin_notice(type, message){

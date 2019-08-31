@@ -185,6 +185,7 @@ add_filter('term_link', 'tag_custom_term_link', 10, 3);
 add_filter('request', 'tag_custom_term_request', 1, 1 );
 add_filter('timber/context', 'add_to_context');
 add_action('admin_menu', 'adminMenu');
+add_action('admin_bar_menu', 'remove_from_admin_bar');
 
 function tag_custom_term_request($query){
 
@@ -279,3 +280,23 @@ function adminMenu() {
         remove_menu_page( 'edit.php' );
     }
 }
+
+function remove_from_admin_bar() {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_node('wp-logo');
+    $wp_admin_bar->remove_node('about');
+    $wp_admin_bar->remove_node('wporg');
+    $wp_admin_bar->remove_node('documentation');
+    $wp_admin_bar->remove_node('support-forums');
+    $wp_admin_bar->remove_node('feedback');
+    $wp_admin_bar->remove_node('view-site');
+}
+
+/*function remove_from_admin_bar($wp_admin_bar) {
+    $user = wp_get_current_user();
+    $enable_roles = array('administrator');
+    if(!array_intersect($enable_roles, $user->roles ) ) {
+        $wp_admin_bar->remove_menu('wp-admin-bar-updates');
+        $wp_admin_bar->remove_node('search');
+    }
+}*/
