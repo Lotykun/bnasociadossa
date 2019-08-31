@@ -15,6 +15,7 @@
 
 $context = Timber::context();
 $context['posts'] = new Timber\PostQuery();
+$context['translations'] = pll_the_languages(array('raw'=> 1, 'hide_if_empty' => 1));
 $context['foo'] = 'bar';
 $templates = array( 'index.twig' );
 if ( is_home() ) {
