@@ -9,7 +9,6 @@
  * @since    Timber 0.1
  */
 
-wp_delete_term( 99);
 $context = Timber::context();
 $timber_post = Timber::query_post();
 $context['post'] = $timber_post;
