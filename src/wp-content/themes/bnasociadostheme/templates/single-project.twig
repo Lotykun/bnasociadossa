@@ -12,7 +12,7 @@
                 <div class="article-project-data">
                     <h1 class="article-h1">{{ post.title }}</h1>
                     <p>{{ post.terms('category') | join(' ') }}</p>
-                    <p>{{ post.terms('post_tag') | join(' ') }}</p>
+                    <p>{{ post.terms('year') | join(' ') }}</p>
                 </div>
                 <div class="article-contain article-gallery">
                     <div class="single-post-media-wrap-gallery">
@@ -48,7 +48,7 @@
                 </div>
             </section>
 
-            <!-- comment box -->
+            {#<!-- comment box -->
             <section class="comment-box">
                 <!-- comments -->
                 <div class="comments">
@@ -67,6 +67,7 @@
                     {% include "comment-form.twig" %}
                 {% endif %}
             </section>
+            #}
         </article>
     </div><!-- /content-wrapper -->
 {% endblock %}

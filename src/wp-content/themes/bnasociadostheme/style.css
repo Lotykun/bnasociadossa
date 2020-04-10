@@ -9,7 +9,7 @@
 .article-gallery div div div figure:first-child{margin-top: 0}
 .article-gallery figure img{width:80px;height:80px}
 .article-main-media{/*width: 50%;background-color: #d0f2d7*/}
-.article-project-body{width: 32%;}
+.article-project-body{width: 35%;}
 .article-project-data{width: 65%;float: right;margin: -170px 0px 0px 0px;}
 .article-project-data p{margin-top: 5px;margin-bottom: 5px;text-align: right;font-size: 20px;font-weight: bold;line-height: 1em;word-wrap: break-word;color: rgb(107, 56, 133);font-style: normal;font-family: calibri, Arial, Helvetica, sans-serif;}
 .article-project-data h1{margin-bottom: 5px;text-align: right;font-size: 20px;font-weight: bold;line-height: 1em;word-wrap: break-word;color: rgb(107, 56, 133);font-style: normal;font-family: calibri, Arial, Helvetica, sans-serif;}
@@ -18,7 +18,7 @@
 .text-project-data {font-size: 17px;font-weight: normal;line-height: 1em;word-wrap: break-word;font-family: calibri, Arial, Helvetica, sans-serif;}
 
 /*.hdr-logo {display: inline-block; margin: 0px; padding: 0px}*/
-.wrapper-div-content{width: 1050px; margin-left: auto; margin-right: auto}
+.wrapper-div-content{width: 1150px; margin-left: auto; margin-right: auto}
 .wrapper-div-content-archive{margin-top: 90px; width: 1008px;}
 .wrapper-div-content-archive p{min-height: 55px; font-size: 17px; font-weight: bold;line-height: 1em;word-wrap: break-word;font-style: normal;font-family: calibri, Arial, Helvetica, sans-serif;text-align: left;}
 .wrapper-div-content-archive h1{min-height: 30px; font-size: 20px;font-weight: bold;line-height: 1em;word-wrap: break-word;color: rgb(255,102,204);font-style: normal;font-family: calibri, Arial, Helvetica, sans-serif;text-align: left; width: 170px;margin-left: auto;margin-right: auto;}
@@ -56,6 +56,8 @@
 
 .desplegable:hover{color:rgb(255,102,204);}
 .desplegable{cursor: pointer;}
+
+.article-project-body-content{margin-left: 4px}
 
 .lang-switcher{display: inline;margin-left: 5px}
 .lang-item {display: inline;list-style: none;}
