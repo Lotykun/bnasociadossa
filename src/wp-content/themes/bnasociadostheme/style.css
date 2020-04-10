@@ -14,7 +14,7 @@
 .article-project-data p{margin-top: 5px;margin-bottom: 5px;text-align: right;font-size: 20px;font-weight: bold;line-height: 1em;word-wrap: break-word;color: rgb(107, 56, 133);font-style: normal;font-family: calibri, Arial, Helvetica, sans-serif;}
 .article-project-data h1{margin-bottom: 5px;text-align: right;font-size: 20px;font-weight: bold;line-height: 1em;word-wrap: break-word;color: rgb(107, 56, 133);font-style: normal;font-family: calibri, Arial, Helvetica, sans-serif;}
 .article-project-body-data{text-align: left}
-.text-project-content {font-size: 14px;font-weight: normal;line-height: 1em;word-wrap: break-word;color: #787878;font-family: calibri, Arial, Helvetica, sans-serif;}
+.text-project-content {font-size: 14px;font-weight: normal;line-height: 1em;word-wrap: break-word;color: #787878;font-family: calibri, Arial, Helvetica, sans-serif;text-align: justify}
 .text-project-data {font-size: 17px;font-weight: normal;line-height: 1em;word-wrap: break-word;font-family: calibri, Arial, Helvetica, sans-serif;}
 
 /*.hdr-logo {display: inline-block; margin: 0px; padding: 0px}*/
