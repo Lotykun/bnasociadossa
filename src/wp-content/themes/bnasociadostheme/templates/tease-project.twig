@@ -1,7 +1,7 @@
 {% extends "tease.twig" %}
 
 {% block content %}
-        <a href="{{post.link}}" data-post='{{post|json_encode()}}'>
+        <a href="{{post.link}}" data-post='{{post.post_title}}'>
             <img src="{{post.thumbnail.src}}" class="showUP"/>
         </a>
 {% endblock %}

@@ -19,8 +19,8 @@
                 $( "article a" ).hover(
                         function() {
                             if ($(this).parent().css('opacity') === "1") {
-                                var data = $(this).data("post");
-                                $(".wrapper-div-content-archive p").text(data.post_title);
+                                var title = $(this).data("post");
+                                $(".wrapper-div-content-archive p").text(title);
                             }
                         }, function() {
                             $(".wrapper-div-content-archive p").text("");
