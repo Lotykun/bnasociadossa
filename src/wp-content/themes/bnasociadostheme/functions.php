@@ -189,11 +189,12 @@ add_action('admin_bar_menu', 'remove_from_admin_bar',999);
 
 function tag_custom_term_request($query){
 
-    if ($query['category_name']) {
+    $name = "";
+    if (isset($query['category_name'])) {
         $name = $query['category_name'];
-    } elseif ($query['year']) {
+    } elseif (isset($query['year'])) {
         $name = $query['year'];
-    } else {
+    } elseif (isset($query['name'])) {
         $name = $query['name'];
     }
 
