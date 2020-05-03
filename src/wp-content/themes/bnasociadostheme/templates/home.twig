@@ -6,7 +6,10 @@
 {% block content %}
     <div class="content-wrapper wrapper-div-content">
         <div class="home-main-container">
-            <div id="swiffycontainer"></div>
+            <!--<div id="swiffycontainer"></div>-->
+            <div id="loty-class">
+                <img height="auto" width="1000px" src="{{getPathCode()}}/img/portada-resize.jpg">
+            </div>
             <div class="home-main-languaje-container">
                 {% for translation in translations %}
                     {% set href = (translation.url != '' and translation.url != ' ') ? translation.url ~ 'projects' : translation.url ~ '/projects' %}
