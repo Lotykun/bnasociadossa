@@ -62,7 +62,8 @@
 .lang-switcher{display: inline;margin-left: 5px}
 .lang-item {display: inline;list-style: none;}
 
-.home-main-container {margin-left: auto;margin-right: auto;/*width:450px;margin-top: 150px*/}
+.home-main-container {margin-left: auto;margin-right: auto;width:805px;/*margin-top: 150px*/}
+.home-main-img-container{}
 .home-main-languaje-container{display: inline-block;padding-bottom: 65px;vertical-align: bottom}
 
 .home-main-languaje-container a {font-size: 11px; color: #FF66FF; text-decoration: none;font-family: Arial, Helvetica, sans-serif;padding-left: 20px}
