@@ -38,6 +38,16 @@
 .wrapper-div-content-contact a:hover{color:rgb(255,102,204);}
 .contact-page-h1 {float: right;margin: -170px 0px 0px 0px; font-size: 20px;font-weight: bold;line-height: 1em;word-wrap: break-word;color: rgb(107, 56, 133);font-style: normal;font-family: calibri, Arial, Helvetica, sans-serif;}
 
+.wrapper-div-content-cv{margin-top: 15px}
+.wrapper-div-content-cv div {display: inline-block; vertical-align: top}
+.cv-page-content p {margin: 0; font-size: 17px;font-weight: normal;line-height: 1em;word-wrap: break-word;color: rgb(107, 56, 133);font-family: calibri, Arial, Helvetica, sans-serif;}
+.cv-page-content div.wp-block-spacer {height: 20px !important;}
+.wrapper-div-content-cv div.cv-page-cvdownload{width: 265px; height: auto; background-color: rgb(204,204,204);padding: 10px;margin-top: 30px}
+.wrapper-div-content-cv div.cv-page-cvdownload a {font-size: 17px;font-weight: bold;line-height: 1em;word-wrap: break-word;color: rgb(255, 102, 204);font-family: calibri, Arial, Helvetica, sans-serif;text-decoration: none}
+.wrapper-div-content-cv div.cv-page-content{width: 45%; margin-left: 10px}
+.cv-page-h1 {float: right;margin: -115px 0px 0px 0px; font-size: 20px;font-weight: bold;line-height: 1em;word-wrap: break-word;color: rgb(107, 56, 133);font-style: normal;font-family: calibri, Arial, Helvetica, sans-serif;}
+#cv-image {width: 600px;height: auto;vertical-align: top}
+
 #nav-main {display: inline-block;vertical-align: top;margin-top: 25px;margin-left: -30px}
 #nav-main ul {list-style: none}
 #nav-main > ul {display: block !important; padding-left: 0px !important; margin: 0px}
