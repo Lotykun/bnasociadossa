@@ -22,12 +22,18 @@
     <script type="text/javascript">
         (function($) {
             $(document).ready(function(){
+                var dataHeight = $( ".awards-page-table" ).height();
                 $( "#awards-page-arrow-down" ).click(function() {
-                    //var valor = parseInt($("#textos_contain").css("margin-top"));
-                    $( ".awards-page-table" ).animate({marginTop: "-=225px"}, 1000 );
+                    var valor = Math.abs(parseInt($( ".awards-page-table" ).css("margin-top"))) + 200;
+                    if (valor < dataHeight) {
+                        $(".awards-page-table").animate({marginTop: "-=225px"}, 1000);
+                    }
                 });
                 $( "#awards-page-arrow-up" ).click(function() {
-                    $( ".awards-page-table" ).animate({marginTop: "+=225px"}, 1000 );
+                    var valor = Math.abs(parseInt($( ".awards-page-table" ).css("margin-top")));
+                    if (valor > 0) {
+                        $( ".awards-page-table" ).animate({marginTop: "+=225px"}, 1000 );
+                    }
                 });
             });
         })(jQuery);
